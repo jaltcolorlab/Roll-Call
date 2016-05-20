@@ -22,6 +22,8 @@ public class FXMLController implements Initializable {
     private TextField tfRollNum;
     @FXML
     private Button searchButton;
+    Integer order;
+    OrderRollManager searchOrder;
     
     @FXML
     private void handleButtonAction(ActionEvent event) {
@@ -29,12 +31,15 @@ public class FXMLController implements Initializable {
             searchButton.setDisable(true);
         }
         else{
-            searchButton.setDisable(false);
-        Integer inputLength = tfRollNum.getLength();
+        searchButton.setDisable(false);
+        Integer rollLength = tfRollNum.getLength();
         String tfInput = tfRollNum.getText();
-        inputLength = Integer.parseInt(tfInput);
+        order = Integer.parseInt(tfInput);
+        //padding left with 0 if number is less than 6 digits
+        String result = String.format("%06d", order);
         tfRollNum.clear();
-        searchMessage.setText((tfInput));
+        result = searchOrder.searchOrder(order, rollLength);
+        searchMessage.setText("The result of your query is: "+result);
         }
     }
     @FXML
@@ -45,11 +50,12 @@ public class FXMLController implements Initializable {
   else{
       searchButton.setDisable(false);
     if (event.getCode() == KeyCode.ENTER) {
-        Integer inputLength = tfRollNum.getLength();
+        //Integer inputLength = tfRollNum.getLength();
         String tfInput = tfRollNum.getText();
-        inputLength = Integer.parseInt(tfInput);
+        order = Integer.parseInt(tfInput);
+        String result = String.format("%06d", order);
         tfRollNum.clear();
-        searchMessage.setText((tfInput));
+        searchMessage.setText("The result of your query is: "+result);
     }
   }
 }

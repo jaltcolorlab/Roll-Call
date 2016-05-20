@@ -42,8 +42,6 @@ public class ChangeListener implements javafx.beans.value.ChangeListener<String>
         //check the length of new value length is less than defined max length then set the new value to the text field, else keep old value in text field
         if(newValue.length() > maxLength){
             textField.setText(oldValue);
-        }else if(newValue.length() == 5){
-            textField.setText(0+oldValue);
         }
         else{
             textField.setText(newValue);
