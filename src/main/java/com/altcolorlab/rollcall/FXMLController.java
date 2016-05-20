@@ -38,7 +38,7 @@ public class FXMLController implements Initializable {
         //padding left with 0 if number is less than 6 digits
         String result = String.format("%06d", order);
         tfRollNum.clear();
-        result = searchOrder.searchOrder(order, rollLength);
+        result = searchOrder.searchOrder(result, rollLength);
         searchMessage.setText("The result of your query is: "+result);
         }
     }
