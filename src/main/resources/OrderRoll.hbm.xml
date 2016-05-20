@@ -8,6 +8,6 @@
       <meta attribute="class-description">
          This class contains the order and roll details. 
       </meta>
-      <property name="OrderRoll" column="orderroll" type="int"/>
+      <property name="OrderRoll" column="orderroll" type="varchar(8)"/>
    </class>
 </hibernate-mapping>

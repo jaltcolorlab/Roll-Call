@@ -14,6 +14,11 @@ import javafx.scene.control.TextFormatter;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.util.converter.IntegerStringConverter;
+import org.hibernate.HibernateException;
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 
 public class FXMLController implements Initializable {
     
@@ -37,16 +42,30 @@ public class FXMLController implements Initializable {
         //padding left with 0 if number is less than 6 digits
         String stringResult = String.format("%06d", order);
         tfRollNum.clear();
-        searchOrder.searchOrder(stringResult);
+        SessionFactory sf = HibernateUtil.getSessionFactory();   
+        Session session = sf.openSession();
+        Transaction tx = null;
+            try{
+                tx = session.beginTransaction();
+                Query query = session.createQuery("SELECT DISTINCT orderroll FROM prfimages WHERE orderroll LIKE ?1");
+                query.setParameter(1, stringResult+"%");
+                System.out.println("event worked");
+                tx.commit();
+                }catch (HibernateException e) {
+                if (tx!=null) tx.rollback();
+                e.printStackTrace(); 
+                }finally {
+                session.close(); 
+              }
         //searchMessage.setText("The result of your query is: "+result);
         }
     }
     @FXML
     public void handleEnterPressed(KeyEvent event){
-  if(tfRollNum.getText()==null || tfRollNum.getText().trim().isEmpty()){
+     if(tfRollNum.getText()==null || tfRollNum.getText().trim().isEmpty()){
             searchButton.setDisable(true);
-   }
-  else{
+        }
+    else{
       searchButton.setDisable(false);
     if (event.getCode() == KeyCode.ENTER) {
         order = Integer.parseInt(tfRollNum.getText());

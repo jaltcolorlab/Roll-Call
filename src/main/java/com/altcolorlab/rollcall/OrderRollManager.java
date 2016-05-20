@@ -29,14 +29,14 @@ public class OrderRollManager {
       Transaction tx = null;
        try{
          tx = session.beginTransaction();
-         //Query query = session.createQuery("SELECT DISTINCT orderroll FROM prfimages WHERE orderroll LIKE ?1");
-         //query.setParameter(1, orderroll+"%");
+         Query query = session.createQuery("SELECT DISTINCT orderroll FROM prfimages WHERE orderroll LIKE ?1");
+         query.setParameter(1, orderroll+"%");
          //orderrolls = query.;
          System.out.println("Session open");
          tx.commit();
       }catch (HibernateException e) {
-         if (tx!=null) tx.rollback();
          e.printStackTrace();
+         tx.rollback();
          System.out.println("It happened here.");
       }finally {
          session.close(); 
@@ -46,7 +46,9 @@ public class OrderRollManager {
       
     }
 
-
+public void testMethod(String string){
+    System.out.println(string);
+}
 
 
 
