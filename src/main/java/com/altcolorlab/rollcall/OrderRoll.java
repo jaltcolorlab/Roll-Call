@@ -10,16 +10,16 @@ package com.altcolorlab.rollcall;
  * @author justink
  */
 public class OrderRoll {
-   private int orderRoll;
+   private String orderRoll;
  
    public OrderRoll() {}
-   public OrderRoll( int orderroll) {
+   public OrderRoll( String orderroll) {
       this.orderRoll = orderroll;
    }
-   public int getOrderRoll() {
+   public String getOrderRoll() {
       return orderRoll;
    }
-   public void setOrderRoll( int orderroll ) {
+   public void setOrderRoll( String orderroll ) {
       this.orderRoll = orderroll;
    }
 

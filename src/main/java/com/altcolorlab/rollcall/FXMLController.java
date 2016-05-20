@@ -1,6 +1,7 @@
 package com.altcolorlab.rollcall;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -32,14 +33,12 @@ public class FXMLController implements Initializable {
         }
         else{
         searchButton.setDisable(false);
-        Integer rollLength = tfRollNum.getLength();
-        String tfInput = tfRollNum.getText();
-        order = Integer.parseInt(tfInput);
+        order = Integer.parseInt(tfRollNum.getText());
         //padding left with 0 if number is less than 6 digits
-        String result = String.format("%06d", order);
+        String stringResult = String.format("%06d", order);
         tfRollNum.clear();
-        result = searchOrder.searchOrder(result, rollLength);
-        searchMessage.setText("The result of your query is: "+result);
+        searchOrder.searchOrder(stringResult);
+        //searchMessage.setText("The result of your query is: "+result);
         }
     }
     @FXML
@@ -50,9 +49,7 @@ public class FXMLController implements Initializable {
   else{
       searchButton.setDisable(false);
     if (event.getCode() == KeyCode.ENTER) {
-        //Integer inputLength = tfRollNum.getLength();
-        String tfInput = tfRollNum.getText();
-        order = Integer.parseInt(tfInput);
+        order = Integer.parseInt(tfRollNum.getText());
         String result = String.format("%06d", order);
         tfRollNum.clear();
         searchMessage.setText("The result of your query is: "+result);
