@@ -5,22 +5,34 @@
  */
 package com.altcolorlab.rollcall;
 
+
+
+
 /**
  *
  * @author justink
  */
-public class OrderRoll {
-   private String orderRoll;
+
+public class OrderRoll{
+   private int id;
+   private String orderroll;
  
    public OrderRoll() {}
-   public OrderRoll( String orderroll) {
-      this.orderRoll = orderroll;
+   public OrderRoll(int ID, String orderroll){
+       this.id=ID;
+       this.orderroll=orderroll;
    }
-   public String getOrderRoll() {
-      return orderRoll;
+   public int getid(){
+    return id;   
    }
-   public void setOrderRoll( String orderroll ) {
-      this.orderRoll = orderroll;
+   public void setid(int id){
+       this.id=id;
+   }
+   public String getorderroll() {
+      return orderroll;
+   }
+   public void setorderroll( String orderroll ) {
+      this.orderroll = orderroll;
    }
 
 }

@@ -9,39 +9,28 @@ package com.altcolorlab.rollcall;
  *
  * @author justink
  */
-import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
+import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
-import org.hibernate.service.ServiceRegistry;
 
-public class HibernateUtil{
-    
-    private static SessionFactory sessionFactory;
-    
-    static{
-        try{
-            Configuration configuration = new Configuration();
-            configuration.configure("hibernate.cfg.xml");
-            StandardServiceRegistryBuilder standardServiceRegistryBuilder = new StandardServiceRegistryBuilder();
-            standardServiceRegistryBuilder.applySettings(configuration.getProperties());
-            ServiceRegistry serviceRegistry = standardServiceRegistryBuilder.build();
-            setSessionFactory(configuration.buildSessionFactory(serviceRegistry));
-        }
-        catch(HibernateException hex){
-            hex.printStackTrace();
-        }
+
+public class HibernateUtil {
+  private static final SessionFactory sessionFactory;
+
+    static {
+            try {
+            	Configuration cfg = new Configuration().configure("hibernate.cfg.xml");        	
+            	StandardServiceRegistryBuilder sb = new StandardServiceRegistryBuilder();
+            	sb.applySettings(cfg.getProperties());
+            	StandardServiceRegistry standardServiceRegistry = sb.build();           	
+            	sessionFactory = cfg.buildSessionFactory(standardServiceRegistry);      	
+            } catch (Throwable th) {
+                    System.err.println("Initial SessionFactory creation failed" + th);
+                    throw new ExceptionInInitializerError(th);
+            }
     }
-    
-    public static SessionFactory getSessionFactory(){
-        return sessionFactory;
-    }
-    
-    public static void setSessionFactory(SessionFactory sessionFactory){
-        HibernateUtil.sessionFactory = sessionFactory;
-    }
-    
-    public static void shutdown(){
-        getSessionFactory().close();
+    public static SessionFactory getSessionFactory() {
+            return sessionFactory;
     }
 }

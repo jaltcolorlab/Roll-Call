@@ -11,6 +11,6 @@
       <id name="id" type="int" column="id">
          <generator class="native"/>
       </id>
-      <property name="orderroll" column="orderroll" type="string"/>
+      <property name="orderroll" column="orderroll" type="varchar(8)"/>
    </class>
 </hibernate-mapping>
