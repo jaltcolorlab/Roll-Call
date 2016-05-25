@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package com.altcolorlab.rollcall;
 
 
@@ -12,21 +8,22 @@ package com.altcolorlab.rollcall;
  *
  * @author justink
  */
-
+//the Java class that will be used to map the Java Object to the relating columns in the db table.
 public class OrderRoll{
-   private int id;
+   private int prfimageid;
    private String orderroll;
- 
+ //constructor must be empty
    public OrderRoll() {}
+ //method which takes in all the variables that are to be get/set. Getters and setters must be as close to the tables column in naming convention as possible to avoid errors.
    public OrderRoll(int ID, String orderroll){
-       this.id=ID;
+       this.prfimageid=ID;
        this.orderroll=orderroll;
    }
-   public int getid(){
-    return id;   
+   public int getprfimageid(){
+    return prfimageid;   
    }
-   public void setid(int id){
-       this.id=id;
+   public void setprfimageid(int id){
+       this.prfimageid=id;
    }
    public String getorderroll() {
       return orderroll;

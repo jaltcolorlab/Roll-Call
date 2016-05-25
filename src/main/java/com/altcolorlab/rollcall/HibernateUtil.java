@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package com.altcolorlab.rollcall;
 
 /**
@@ -14,7 +10,7 @@ import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 
-
+//Sets up the Hibernate session factory. This is the Hibernate 4.3.10 version of session factory setup and takes in the configuration xml.
 public class HibernateUtil {
   private static final SessionFactory sessionFactory;
 
@@ -30,6 +26,7 @@ public class HibernateUtil {
                     throw new ExceptionInInitializerError(th);
             }
     }
+    //returns the session factory that was established above.
     public static SessionFactory getSessionFactory() {
             return sessionFactory;
     }

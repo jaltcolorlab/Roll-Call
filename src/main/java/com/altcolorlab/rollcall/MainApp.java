@@ -1,3 +1,12 @@
+/*
+Author: Justin Kutscherousky
+Date:5/25/2016
+Company: Ark-La-Tex Color Lab Longview, TX 75601
+Description: Simple JavaFX 8 + Hibernate 4.3.10+ MYSql 6.3 application that queries a table from a database on a local network
+and alerts if a particular "job order number" is being used. 
+
+*/
+
 package com.altcolorlab.rollcall;
 
 import javafx.application.Application;

@@ -12,13 +12,13 @@
 
    <!-- Assume user is the database name -->
    <property name="hibernate.connection.url">
-      jdbc:mysql://localhost/rollcalltest
+      jdbc:mysql://192.168.130.169:3306/pplans
    </property>
    <property name="hibernate.connection.username">
-      root
+      digitalvfp
    </property>
    <property name="hibernate.connection.password">
-      St9181216
+      alt2301
    </property>
 
    <!-- List of XML mapping files -->

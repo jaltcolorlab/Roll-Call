@@ -4,13 +4,17 @@
  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
 
 <hibernate-mapping>
+  <!-- giving the class to which the MYSql table with be mapped to. In this case it is "prfimages" -->
    <class name="com.altcolorlab.rollcall.OrderRoll" table="prfimages">
+       <!--giving a description of the class that is to do the mapping -->
       <meta attribute="class-description">
          This class contains the order-roll detail. 
       </meta>
-      <id name="id" type="int" column="id">
+      <!--giving the mapping file a primary key in the table to help with querying. In this case it would be the "id" column -->
+      <id name="prfimageid" type="int" column="prfimageid">
          <generator class="native"/>
       </id>
+      <!--the column and type of data in the column that is to be mapped. There are more columns int he db table, but this is the only one that needs to be searched. -->
       <property name="orderroll" column="orderroll" type="string"/>
    </class>
 </hibernate-mapping>
